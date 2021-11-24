@@ -21,7 +21,7 @@ const Page = () => {
           <Heading as="h2" variant="page-title">
             Hai Tran
           </Heading>
-          <p>Web Developer / Cloud Architecture / Signal Processing Engineer</p>
+          <p>Web Developer / Signal Processing Engineer</p>
         </Box>
         <Box 
           flexShrink={0} 
@@ -49,10 +49,7 @@ const Page = () => {
           Work
         </Heading>
         <Paragraph>
-          Hai is a freelance and full-stack developer based in Hanoi, Vienam with a passion for building digital services/stuff he wants. He has a knack for all things launching products, from planning and designing all the way to solving real-life problems with code. When not online, he loves hanging out with his camera. Currently, he is living off of his own product called {' '}
-          <NextLink href="/test">
-            <Link>Indrop</Link>
-          </NextLink>
+          Hai is a full-stack web developer and a signal processing engineer based in Hanoi, Vienam with a passion for building digital services/stuff that helpful for users. He belives that products can be realesed by using new and productive technologies. When not online, he loves swimming and fishing. Currently, he is using AWS Amplify, React, NextJS to build applications, and also keep learning at best. 
         </Paragraph>
       </Section>
       <Section delay={0.2}>
@@ -67,15 +64,9 @@ const Page = () => {
         </BioSection>
         <BioSection>
           <BioYear>
-            2011
-          </BioYear>
-          Completed the Bachelor of Engineering in Electronics and Telecommunication at Hanoi University of Technology, Vietnam 
-        </BioSection>
-        <BioSection>
-          <BioYear>
             2016
           </BioYear>
-          Completed the Doctor&apos;s Program in Information Engineering at University of The Ryukyus, Japan
+          Completed the Doctor&apos;s Program in Information Engineering at Univ. of The Ryukyus, Japan
         </BioSection>
         <BioSection>
           <BioYear>
