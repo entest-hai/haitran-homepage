@@ -49,7 +49,11 @@ const Page = () => {
           Work
         </Heading>
         <Paragraph>
-          Hai is a full-stack web developer and a signal processing engineer based in Hanoi, Vienam with a passion for building digital services/stuff that helpful for users. He belives that products can be realesed by using new and productive technologies. When not online, he loves swimming and fishing. Currently, he is using AWS Amplify, React, NextJS to build applications, and also keep learning at best. 
+          Hai is a full-stack web developer and a signal processing engineer based in Hanoi, Vienam with a passion for building digital services/stuff that helpful for users. He belives that products can be realesed with a small team by using new and productive technologies. His tech stack is AWS Amplify, React, NextJS, JavaScript, Python and kee learning at best. Currently, he is creating a web {' '}
+          <NextLink href="/test">
+            <Link>entest</Link>
+          </NextLink> {' '}
+          for practicing IELTS and TOEFL tests where authors/gurus can also contribute contents. 
         </Paragraph>
       </Section>
       <Section delay={0.2}>
