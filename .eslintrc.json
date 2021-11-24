@@ -2,6 +2,14 @@
     "root": true,
     "extends": "next",
     "rules": {
+      "quotes":[
+        "error",
+        "single"
+      ],
+      "indent":[
+        "error",
+        2
+      ],
       "no-unused-vars": [
         "error",
         {
