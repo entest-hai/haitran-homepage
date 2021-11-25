@@ -40,20 +40,21 @@ const VoxelDog = () => {
     if (container && !renderer) {
       const scW = container.clientWidth
       const scH = container.clientHeight
-
+      // create the renderer object 
       const renderer = new THREE.WebGLRenderer({
         antialias: true,
         alpha: true
       })
+      // configure the renderer object with size and pixel ratio
       renderer.setPixelRatio(window.devicePixelRatio)
       renderer.setSize(scW, scH)
       renderer.outputEncoding = THREE.sRGBEncoding
       container.appendChild(renderer.domElement)
       setRenderer(renderer)
-
       // 640 -> 240
       // 8   -> 6
       const scale = scH * 0.005 + 4.8
+      // create a THREE camera object 
       const camera = new THREE.OrthographicCamera(
         -scale,
         scale,
@@ -62,18 +63,19 @@ const VoxelDog = () => {
         0.01,
         50000
       )
+      // setup the camera position
       camera.position.copy(initialCameraPosition)
       camera.lookAt(target)
       setCamera(camera)
-
+      // add ambient light to scene 
       const ambientLight = new THREE.AmbientLight(0xcccccc, 1)
       scene.add(ambientLight)
-
+      // add control for animation 
       const controls = new OrbitControls(camera, renderer.domElement)
       controls.autoRotate = true
       controls.target = target
       setControls(controls)
-
+      // load 3d image object into the scene 
       loadGLTFModel(scene, '/dog.glb', {
         receiveShadow: false,
         castShadow: false
@@ -93,6 +95,9 @@ const VoxelDog = () => {
           const p = initialCameraPosition
           const rotSpeed = -easeOutCirc(frame / 120) * Math.PI * 20
 
+          // debug root speed fast on starting -11.39 to -62.xx
+          // console.log('root speed ', rotSpeed)
+
           camera.position.y = 10
           camera.position.x =
             p.x * Math.cos(rotSpeed) + p.z * Math.sin(rotSpeed)
@@ -100,12 +105,15 @@ const VoxelDog = () => {
             p.z * Math.cos(rotSpeed) - p.x * Math.sin(rotSpeed)
           camera.lookAt(target)
         } else {
+          // orbit means just keep it rotating 
           controls.update()
         }
 
+        // add the scene and camera to renderer 
         renderer.render(scene, camera)
       }
 
+      // TODO check this 25 NOV 2021
       return () => {
         console.log('unmount')
         cancelAnimationFrame(req)
