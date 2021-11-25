@@ -11,8 +11,8 @@ import {
   MenuList,
   MenuButton,
   IconButton,
-  Menu} from "@chakra-ui/react";
-  import { HamburgerIcon } from '@chakra-ui/icons'
+  Menu} from '@chakra-ui/react';
+import { HamburgerIcon } from '@chakra-ui/icons'
 import { IoLogoGithub } from 'react-icons/io5';
 import Logo from '../logo';
 import ThemeToggleButton from '../theme-toggle-button';
@@ -91,7 +91,7 @@ export const TestNavBar = (props) => {
         </Stack>
         <Box
           flex={1}
-          align={"right"}
+          align={'right'}
         >
           <ThemeToggleButton></ThemeToggleButton>
           <Box ml={2} display={{base:'inline-block', md:'none'}}>

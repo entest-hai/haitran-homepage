@@ -1,9 +1,9 @@
 // 24 NOV 2021 TRAN MINH HAI test reproduce navbar 
 // Link target="_blank" means open in a new tab 
 import NextLink from 'next/link'
-import { Container, Box, Heading, Image, Link, useColorModeValue, List, ListItem, Icon, SimpleGrid, Button } from "@chakra-ui/react"
-import Paragraph from "../components/paragraph"
-import Section from "../components/section"
+import { Container, Box, Heading, Image, Link, useColorModeValue, List, ListItem, Icon, SimpleGrid, Button } from '@chakra-ui/react'
+import Paragraph from '../components/paragraph'
+import Section from '../components/section'
 import { BioSection, BioYear } from '../components/bio'
 import { GridItem } from '../components/grid-item'
 import { IoLogoInstagram, IoLogoTwitter, IoLogoGithub, IoLogoDiscord } from 'react-icons/io5'
@@ -13,7 +13,7 @@ import thumbInkdrop from './../public/images/works/inkdrop_eyecatch.png'
 
 const Page = () => {
   return (
-    <Container maxWidth={"container.md"}>
+    <Container maxWidth={'container.md'}>
       <Box 
         borderRadius="lg"
         bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
@@ -33,24 +33,24 @@ const Page = () => {
           flexShrink={0} 
           mt={{base:4, md:0}} 
           ml={{md:6}} 
-          textAlign={"center"}
+          textAlign={'center'}
+        >
+          <Image
+            borderColor={'whiteAlpha.70'}
+            borderWidth={2}
+            borderStyle={'solid'}
+            maxW={'100px'}
+            display={'inline-block'}
+            borderRadius={'full'}
+            src={'/images/hai.jpg'}
+            alt={'Profile Image'}
           >
-            <Image
-              borderColor={"whiteAlpha.70"}
-              borderWidth={2}
-              borderStyle={"solid"}
-              maxW={"100px"}
-              display={"inline-block"}
-              borderRadius={"full"}
-              src={"/images/hai.jpg"}
-              alt={"Profile Image"}
-            >
-            </Image>
+          </Image>
         </Box>
       </Box>
       <Section delay={0.1}>
         <Heading
-          variant={"section-title"}
+          variant={'section-title'}
         >
           Work
         </Heading>
@@ -65,7 +65,7 @@ const Page = () => {
       <Section delay={0.2}>
         <Heading 
           as="h3" 
-          variant={"section-title"}>
+          variant={'section-title'}>
             Bio
         </Heading>
         <BioSection>
@@ -98,7 +98,7 @@ const Page = () => {
         </BioSection>
       </Section>
       <Section delay={0.3}>
-        <Heading as={"h3"} variant={"section-title"}>
+        <Heading as={'h3'} variant={'section-title'}>
           I ♥
         </Heading>
         <Paragraph>
@@ -114,7 +114,7 @@ const Page = () => {
         </Paragraph>
       </Section>
       <Section delay={0.3}>
-        <Heading as={"h3"} variant={"section-title"}>
+        <Heading as={'h3'} variant={'section-title'}>
           On the web
         </Heading>
         <List>

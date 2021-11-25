@@ -38,7 +38,7 @@ const LinkItem = ({ href, path, _target, children, ...props }) => {
 
 const Navbar = props => {
   const { path } = props
-
+  
   return (
     <Box
       position="fixed"
