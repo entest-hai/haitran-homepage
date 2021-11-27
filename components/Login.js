@@ -1,52 +1,95 @@
+// 26 NOV 2021 TRAN MINH HAI 
+// Compare Box and Flex to create login form 
+// justifyContent to align item in main axis 
+// alignItem to align item in cross axis 
+
 import {Box, Heading, Flex, Button, useColorMode, Input } from '@chakra-ui/react';
 
 const Login = () => {
-
-  const {toggleColorMode} = useColorMode() 
-
   return (
-    <Flex height={'100vh'} bg={'tomato'}>
-      <Flex 
-        bg={'gray.200'} 
-        // width={300}
-        m={'auto'} 
-        mt={200} flexDirection='column' 
+    <Flex height={'100vh'} justifyContent={'center'} alignItems={'center'} bg={'tomato'}>
+      <Flex flexDirection={'column'} borderRadius={6} bg={'gray.200'} p={12}>
+        <Heading
+          mb={6}
+        >
+          Log In 
+        </Heading>
+        <Input
+          placeholder={'username'}
+          mb={3}
+        >
+        </Input>
+        <Input
+          placeholder={'password'}
+          mb={6}
+        >
+        </Input>
+        <Button
+          variant={'solid'}
+          colorScheme={'teal'}
+          mb={3}
+        >
+          Log In
+        </Button>
+        <Button
+          variant={'outline'}
+          colorScheme={'teal'}
+          onClick={useColorMode}
+        >
+          Toggle Theme Color
+        </Button>
+      </Flex>
+    </Flex>
+  )
+}
+
+const LoginBox = () => {
+  return (
+    <Box 
+      width={'100%'} 
+      height={'100vh'} 
+      bg={'tomato'} 
+      display={'flex'} 
+      justifyContent={'center'} 
+      alignItems={'center'}> 
+      <Box
+        bg={'gray.200'}
         display={'flex'}
-        p={12}
+        flexDirection={'column'}
         borderRadius={6}
-        justifyItems={'center'}
+        p={12}
       >
         <Heading
           mb={6}
         >
-        Log In
+          Log In 
         </Heading>
         <Input
-          mb={3}
           placeholder={'username'}
+          mb={3}
         >
         </Input>
         <Input
-          mb={6}
           placeholder={'password'}
+          mb={6}
         >
         </Input>
         <Button
-          mb={3}
           variant={'solid'}
           colorScheme={'teal'}
+          mb={3}
         >
-        Log In
+          Log In
         </Button>
         <Button
-          onClick={toggleColorMode}
           variant={'outline'}
           colorScheme={'teal'}
+          onClick={useColorMode}
         >
-        Toggle Theme Color 
+          Toggle Theme Color
         </Button>
-      </Flex>
-    </Flex>
+      </Box>
+    </Box>
   )
 }
 
