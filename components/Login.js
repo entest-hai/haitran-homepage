@@ -2,8 +2,18 @@
 // Compare Box and Flex to create login form 
 // justifyContent to align item in main axis 
 // alignItem to align item in cross axis 
-
 import {Box, Heading, Flex, Button, useColorMode, useColorModeValue, Input } from '@chakra-ui/react';
+
+const ToggleTheme = () => {
+  const { toggleColorMode } = useColorMode()
+  return (
+    <Button
+      onClick={toggleColorMode}
+    >
+          Toggle Theme Mode
+    </Button>
+  )
+}
 
 const Login = () => {
 
@@ -16,7 +26,7 @@ const Login = () => {
         <Heading
           mb={6}
         >
-          Log In 
+          Log In Flex
         </Heading>
         <Input
           placeholder={'username'}
@@ -29,39 +39,32 @@ const Login = () => {
         >
         </Input>
         <Button
+          onClick={toggleThemeColor}
           variant={'solid'}
           colorScheme={'teal'}
           mb={3}
         >
           Log In
         </Button>
-        <Button
-          variant={'outline'}
-          colorScheme={'teal'}
-          onClick={() => {
-            console.log('change them color')
-            useColorModeValue
-          }}
-        >
-          Toggle Theme Color
-        </Button>
+        <ToggleTheme></ToggleTheme>
       </Flex>
     </Flex>
   )
 }
 
-const LoginBox = () => {
-  const {toggleThemeColor} = useColorMode()
+export const LoginBox = () => {
+  const { toggleColorMode } = useColorMode()
+  const formBackground = useColorModeValue('gray.200', 'gray.700')
+
   return (
     <Box 
       width={'100%'} 
       height={'100vh'} 
-      bg={'tomato'} 
       display={'flex'} 
       justifyContent={'center'} 
       alignItems={'center'}> 
       <Box
-        bg={'gray.200'}
+        bg={formBackground}
         display={'flex'}
         flexDirection={'column'}
         borderRadius={6}
@@ -70,7 +73,7 @@ const LoginBox = () => {
         <Heading
           mb={6}
         >
-          Log In 
+          Log In Box
         </Heading>
         <Input
           placeholder={'username'}
@@ -83,22 +86,17 @@ const LoginBox = () => {
         >
         </Input>
         <Button
+          onClick={toggleColorMode}
           variant={'solid'}
           colorScheme={'teal'}
           mb={3}
         >
           Log In
         </Button>
-        <Button
-          variant={'outline'}
-          colorScheme={'teal'}
-          onClick={toggleThemeColor}
-        >
-          Toggle Theme Color
-        </Button>
+        <ToggleTheme></ToggleTheme>
       </Box>
     </Box>
   )
-}
+} 
 
 export default Login;
