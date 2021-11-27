@@ -4,7 +4,7 @@ import theme from '../lib/theme';
 
 const Website = ({Component, pageProps, router}) => {
   return (
-    <ChakraProvider theme={theme}>
+    <ChakraProvider>
       <Component {...pageProps} key={router.route}></Component>
     </ChakraProvider>
   )

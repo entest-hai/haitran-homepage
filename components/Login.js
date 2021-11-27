@@ -3,12 +3,16 @@
 // justifyContent to align item in main axis 
 // alignItem to align item in cross axis 
 
-import {Box, Heading, Flex, Button, useColorMode, Input } from '@chakra-ui/react';
+import {Box, Heading, Flex, Button, useColorMode, useColorModeValue, Input } from '@chakra-ui/react';
 
 const Login = () => {
+
+  const {toggleThemeColor} = useColorMode()
+  const formBackground = useColorModeValue('gray.200', 'gray.700')
+
   return (
-    <Flex height={'100vh'} justifyContent={'center'} alignItems={'center'} bg={'tomato'}>
-      <Flex flexDirection={'column'} borderRadius={6} bg={'gray.200'} p={12}>
+    <Flex height={'100vh'} justifyContent={'center'} alignItems={'center'}>
+      <Flex flexDirection={'column'} borderRadius={6} bg={formBackground} p={12}>
         <Heading
           mb={6}
         >
@@ -34,7 +38,10 @@ const Login = () => {
         <Button
           variant={'outline'}
           colorScheme={'teal'}
-          onClick={useColorMode}
+          onClick={() => {
+            console.log('change them color')
+            useColorModeValue
+          }}
         >
           Toggle Theme Color
         </Button>
@@ -44,6 +51,7 @@ const Login = () => {
 }
 
 const LoginBox = () => {
+  const {toggleThemeColor} = useColorMode()
   return (
     <Box 
       width={'100%'} 
@@ -84,7 +92,7 @@ const LoginBox = () => {
         <Button
           variant={'outline'}
           colorScheme={'teal'}
-          onClick={useColorMode}
+          onClick={toggleThemeColor}
         >
           Toggle Theme Color
         </Button>
