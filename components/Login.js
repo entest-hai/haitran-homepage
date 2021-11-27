@@ -53,7 +53,7 @@ const Login = () => {
 }
 
 export const LoginBox = () => {
-  const { toggleColorMode } = useColorMode()
+  const { toggleColorModeTest } = useColorMode()
   const formBackground = useColorModeValue('gray.200', 'gray.700')
 
   return (
@@ -86,7 +86,7 @@ export const LoginBox = () => {
         >
         </Input>
         <Button
-          onClick={toggleColorMode}
+          onClick={toggleColorModeTest}
           variant={'solid'}
           colorScheme={'teal'}
           mb={3}
