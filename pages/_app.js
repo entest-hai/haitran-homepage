@@ -4,7 +4,7 @@ import Layout from '../components/layouts/main'
 
 const Website = ({Component, pageProps, router}) => {
   return (
-    <ChakraProvider theme={theme}>
+    <ChakraProvider>
       {/* <Layout router={router}> */}
       <Component {...pageProps} key={router.route}></Component>
       {/* </Layout> */}
