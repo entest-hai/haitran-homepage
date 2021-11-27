@@ -121,7 +121,7 @@ const Page = () => {
           <ListItem>
             <Link href="https://github.com/craftzdog" target="_blank">
               <Button
-                variant="ghost"
+                variant="ghost" 
                 colorScheme="teal"
                 leftIcon={<Icon as={IoLogoGithub} />}
               >
