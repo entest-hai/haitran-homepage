@@ -10,7 +10,6 @@ import {
   Icon,
   IconButton,
   createIcon,
-  IconProps,
   useColorModeValue,
 } from '@chakra-ui/react';
 
@@ -40,15 +39,15 @@ const Home =  () => {
                 bg: 'red.400',
                 zIndex: -1,
               }}>
-              Biorithm Singapore,
+              Biorithm USA,
             </Text>
             <br />
             <Text as={'span'} color={'red.400'}>
-              Southest Asia!
+              Welcome!
             </Text>
           </Heading>
           <Text color={'gray.500'}>
-            Users from AWS Asia Pacific (Singapore) ap-southest-1 will be routed here! 
+            Users from USA will be routed here - US East (N.Virginia)  aws us-east-1 ! 
           </Text>
           <Stack
             spacing={{ base: 4, sm: 6 }}
