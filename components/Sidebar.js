@@ -1,3 +1,5 @@
+// 03 DEC 2021 TRAN MINH HAI Build Sidebar collapsable
+
 import { Avatar, Flex, Divider, Heading, IconButton, Menu, Link, MenuButton, Icon, Text} from '@chakra-ui/react';
 import {useState} from 'react';
 import { FiBriefcase, FiCalendar, FiDollarSign, FiHome, FiMenu, FiSettings, FiUser } from 'react-icons/fi';
