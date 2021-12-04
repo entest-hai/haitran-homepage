@@ -1,10 +1,98 @@
 // 04 DEC 2021 TRAN MINH HAI chat 
-import {Text, Avatar, AvatarBadge, Box, Divider, Flex, Heading, HStack, IconButton, Tooltip, VStack } from '@chakra-ui/react'; 
+import {Text,
+  Avatar,
+  AvatarBadge,
+  Box,
+  Divider,
+  Flex,
+  Heading,
+  HStack,
+  IconButton,
+  Tooltip,
+  VStack,
+  Input,
+  List,
+  ListItem, 
+  Stat,
+  StatNumber,
+  StatLabel} from '@chakra-ui/react'; 
 import {MdDashboard, MdMail, MdSettings} from 'react-icons/md';
 import {HiLightningBolt, HiBell, HiTag, HiSearch} from 'react-icons/hi'; 
-import {RiDribbbleLine, RiInstagramLine, RiTwitterFile, RiTwitterFill} from 'react-icons/ri'; 
+import {RiDribbbleLine, RiInstagramLine, RiTwitterFill} from 'react-icons/ri'; 
 
-const onlineFriends = ['Hai', 'Ha', 'Alex', 'Min', 'Tran', 'John', 'David', 'Mike', 'Shane', 'Miky', 'Leo'];
+const onlineFriends = ['Hai',
+  'Ha',
+  'Alex',
+  'Min',
+  'Tran',
+  'John',
+  'David',
+  'Mike',
+  'Shane',
+  'Miky',
+  'Leo'];
+
+
+const Chat = () => {
+  return (
+    <Flex width='full' flexDirection='column'>
+      <HStack px={4} py={4} borderBottomColor='gray.100' borderBottomWidth={1}>
+        <Input variant='filled' rounded='full' placeholder='Search friends' />
+      </HStack>
+      <Flex px={6} overflowY='auto' flexDirection='column' flex={1}>
+        <Stat mt={6}>
+          <StatLabel color='gray.500'>
+            Chatting with
+          </StatLabel>
+          <StatNumber>
+            Dina Harrison
+          </StatNumber>
+        </Stat>
+      </Flex>
+    </Flex>
+  );
+}
+
+const ChatRow = () => {
+  return (
+    <Flex
+      py={4}
+      px={8}
+      w='full'
+      alignItems='center'
+      borderBottomColor='gray.100'
+      borderBottomWidth={1}
+      style={{transition: 'background 300ms'}}
+      _hover={{ bg: 'gray.50', cursor: 'pointer' }}
+    >
+      <Box rounded='full' bg='gray.100' minw={14} minH={14}></Box>
+      <VStack 
+        overflow='hidden' 
+        flex={1} 
+        ml={3} 
+        spacing={0} 
+        alignItems='flex-start'
+      >
+        <Heading fontSize={12} w='full'>
+          John Shinoda
+        </Heading>
+        <Text 
+          overflow='hidden' 
+          textOverflow='ellipsis' 
+          whiteSpace='nowrap' 
+          width='full' 
+          fontSize='sx' 
+          color='gray.500'
+        >
+          Sample text message goes here 
+        </Text>
+      </VStack>
+      <Text ml={3} fontSize='xs' color='gray.500'>
+        08:30
+      </Text>
+    </Flex>
+  );
+}
 
 
 const UserAvatar = ({name}) => {
@@ -12,7 +100,6 @@ const UserAvatar = ({name}) => {
     <Tooltip label={name}>
       <Avatar name={name}>
         <AvatarBadge boxSize={4} bg="green.500">
-
         </AvatarBadge>
       </Avatar>
     </Tooltip>
@@ -103,6 +190,59 @@ const ChatHistorySidebar = () => {
           <UserAvatar name={friend} key={friend} />
         ))}
       </HStack>
+      <Box px={8} w='full'>
+        <Divider color='gray.100'>
+        </Divider>
+      </Box>
+      <Box px={8} w='full'>
+        <Heading size='xs'>Chats</Heading>
+        <Input 
+          variant='filled' 
+          mt={2} minH={10} 
+          rounded='full' 
+          placeholder='Search chat' 
+        />
+      </Box>
+      <Box width='full' overflowY='auto'>
+        <List width='full' spacing={0}>
+          <ListItem>
+            <ChatRow></ChatRow>
+          </ListItem>
+          <ListItem>
+            <ChatRow></ChatRow>
+          </ListItem>
+          <ListItem>
+            <ChatRow></ChatRow>
+          </ListItem>
+          <ListItem>
+            <ChatRow></ChatRow>
+          </ListItem>
+          <ListItem>
+            <ChatRow></ChatRow>
+          </ListItem>
+          <ListItem>
+            <ChatRow></ChatRow>
+          </ListItem>
+          <ListItem>
+            <ChatRow></ChatRow>
+          </ListItem>
+          <ListItem>
+            <ChatRow></ChatRow>
+          </ListItem>
+          <ListItem>
+            <ChatRow></ChatRow>
+          </ListItem>
+          <ListItem>
+            <ChatRow></ChatRow>
+          </ListItem>
+          <ListItem>
+            <ChatRow></ChatRow>
+          </ListItem>
+          <ListItem>
+            <ChatRow></ChatRow>
+          </ListItem>
+        </List>
+      </Box>
     </VStack>
   ); 
 }
@@ -114,11 +254,29 @@ const Chart = () => {
       <Flex as='nav' h='full' maxW={16} w='full' bg='tomato'>
         <Navigation />
       </Flex>
-      <Flex as='aside' h='full' maxW='sm' w='full' borderRightColor='gray.500' borderRightWidth={1} bg='gray.100'>
+      <Flex 
+        as='aside' 
+        h='full' 
+        maxW='sm' 
+        w='full' 
+        borderRightColor='gray.100' 
+        borderRightWidth={1}>
         <ChatHistorySidebar />
       </Flex>
-      <Flex as='main' h='full' flex={1} borderRightColor='gray.100' borderRightWidth={1} bg='gray.500'/>
-      <Flex as='aside' h='full' maxW='sm' w='full' />
+      <Flex 
+        as='main' 
+        h='full' 
+        flex={1} 
+        borderRightColor='gray.100' 
+        borderRightWidth={1} 
+        bg='gray.100'>
+        <Chat></Chat>
+      </Flex>
+      <Flex 
+        as='aside' 
+        h='full' 
+        maxW='sm' 
+        w='full' />
     </HStack>
   ); 
 }
