@@ -1,5 +1,7 @@
 // 04 DEC 2021 TRAN MINH HAI chat 
 import {Text,
+  Drawer,
+  DrawerContent,
   Button,
   Avatar,
   AvatarBadge,
@@ -16,9 +18,12 @@ import {Text,
   ListItem, 
   Stat,
   StatNumber,
-  StatLabel} from '@chakra-ui/react'; 
+  StatLabel,
+  DrawerOverlay,
+  DrawerCloseButton,
+  useDisclosure} from '@chakra-ui/react'; 
 import {MdDashboard, MdMail, MdSettings} from 'react-icons/md';
-import {HiLightningBolt, HiBell, HiTag, HiSearch} from 'react-icons/hi'; 
+import {HiLightningBolt, HiBell, HiTag, HiSearch, HiChat} from 'react-icons/hi'; 
 import {RiDribbbleLine, RiInstagramLine, RiTwitterFill} from 'react-icons/ri'; 
 import {IoSend} from 'react-icons/io5';
 import {FaBell} from 'react-icons/fa';
@@ -90,6 +95,19 @@ const messages = [
   }
 ];
 
+const ChatHistoryDrawer = ({ isOpen, onClose }) => {
+  return (
+    <Drawer isOpen={isOpen} placement='left' onClose={onClose}>
+      <DrawerOverlay>
+        <DrawerContent>
+          <DrawerCloseButton></DrawerCloseButton>
+          <ChatHistorySidebar></ChatHistorySidebar>
+        </DrawerContent>
+      </DrawerOverlay>
+    </Drawer>
+  );
+}
+
 const ChatBubble = ({message, dateSent, from}) => {
   const isMe = from == 'me'
   const alignment = isMe ? 'flex-end' : 'flex-start'
@@ -116,10 +134,18 @@ const ChatBubble = ({message, dateSent, from}) => {
   );
 }
 
-const Chat = () => {
+const Chat = ({ onChatHistoryOpen }) => {
   return (
     <Flex width='full' flexDirection='column'>
       <HStack px={4} py={4} borderBottomColor='gray.100' borderBottomWidth={1}>
+        <IconButton
+          onClick={ onChatHistoryOpen }
+          display={{ base: 'inherit', lg: 'none' }}
+          icon={<HiChat></HiChat>}
+          aria-label='Toggle Chat History  Drawer'
+        >
+
+        </IconButton>
         <Input variant='filled' rounded='full' placeholder='Search friends' />
       </HStack>
       <Flex px={6} overflowY='auto' flexDirection='column' flex={1}>
@@ -531,6 +557,9 @@ const ChatHistorySidebar = () => {
 
 
 const Chart = () => {
+
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
   return (
     <HStack height='100vh' spacing={0}>
       <Flex as='nav' h='full' maxW={16} w='full' bg='tomato'>
@@ -539,7 +568,8 @@ const Chart = () => {
       <Flex 
         as='aside' 
         h='full' 
-        maxW='sm' 
+        maxW={{base: 'xs', xl: 'sm'}}
+        display={{base:'none', xl: 'flex'}}
         w='full' 
         borderRightColor='gray.100' 
         borderRightWidth={1}>
@@ -552,18 +582,21 @@ const Chart = () => {
         borderRightColor='gray.100' 
         borderRightWidth={1} 
       >
-        <Chat></Chat>
+        <Chat onChatHistoryOpen={onOpen}></Chat>
       </Flex>
       <Flex 
         as='aside' 
         h='full' 
-        maxW='sm' 
+        maxW={{base: 'xs', xl: 'sm'}}
         w='full'
+        display={{base:'none', lg:'flex'}}
       >
-        <ChatFiles>
-
-        </ChatFiles>
+        <ChatFiles />
       </Flex>
+      <ChatHistoryDrawer
+        isOpen={isOpen}
+        onClose={onClose}
+      ></ChatHistoryDrawer>
     </HStack>
   ); 
 }
