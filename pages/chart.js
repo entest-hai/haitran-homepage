@@ -1,5 +1,6 @@
 // 04 DEC 2021 TRAN MINH HAI chat 
 import {Text,
+  Button,
   Avatar,
   AvatarBadge,
   Box,
@@ -19,6 +20,9 @@ import {Text,
 import {MdDashboard, MdMail, MdSettings} from 'react-icons/md';
 import {HiLightningBolt, HiBell, HiTag, HiSearch} from 'react-icons/hi'; 
 import {RiDribbbleLine, RiInstagramLine, RiTwitterFill} from 'react-icons/ri'; 
+import {IoSend} from 'react-icons/io5';
+import {FaBell} from 'react-icons/fa';
+
 
 const onlineFriends = ['Hai',
   'Ha',
@@ -32,6 +36,85 @@ const onlineFriends = ['Hai',
   'Miky',
   'Leo'];
 
+
+const messages = [
+  {
+    message: 'Hey Travis! Would you like to go out for a coffee?',
+    from: 'others',
+    dateSent: '20:21'
+  },
+  {
+    message: 'Sure! At 11:00 am?',
+    from: 'me',
+    dateSent: '20:22'
+  },
+  {
+    message: 'That\'s too early! How about at noon?',
+    from: 'others',
+    dateSent: '20:22'
+  },
+  {
+    message: 'That sounds good as well. Where should we meet?',
+    from: 'me',
+    dateSent: '20:23'
+  },
+  {
+    message: 'Meet me at the hardware store on 21 Duck Street.',
+    from: 'others',
+    dateSent: '20:23'
+  },
+  {
+    message: 'Sounds good. I\'ll bring my friend with me as well!',
+    from: 'me',
+    dateSent: '20:24'
+  },
+  {
+    message: 'Which one? The developer or the designer?',
+    from: 'others',
+    dateSent: '20:24'
+  },
+  {
+    message: 'The developer. You remember Tony, right?',
+    from: 'me',
+    dateSent: '20:24'
+  },
+  {
+    message: 'Yeah! Tony\'s a great guy!',
+    from: 'others',
+    dateSent: '20:25'
+  },
+  {
+    message: 'Indeed he is! Alright, see you later 👋!',
+    from: 'me',
+    dateSent: '20:25'
+  }
+];
+
+const ChatBubble = ({message, dateSent, from}) => {
+  const isMe = from == 'me'
+  const alignment = isMe ? 'flex-end' : 'flex-start'
+  const bottomRightRadius = isMe ? 0 : 32 
+  const bottomLeftRadius = isMe ? 32 : 0
+  return (
+    <VStack mt={6} alignItems={alignment} alignSelf={alignment}>
+      <Box
+        bg={isMe ? 'blue.50' : 'gray.100'}
+        px={6}
+        py={4}
+        maxW={80}
+        borderTopLeftRadius={32}
+        borderTopRightRadius={32}
+        borderBottomLeftRadius={bottomLeftRadius}
+        borderBottomRightRadius={bottomRightRadius}
+      >
+        {message}
+      </Box>
+      <Text fontSize='xs' color='gray'>
+        {dateSent}
+      </Text>
+    </VStack>
+  );
+}
 
 const Chat = () => {
   return (
@@ -48,10 +131,209 @@ const Chat = () => {
             Dina Harrison
           </StatNumber>
         </Stat>
+        {messages.map(({message, from, dateSent}, index) => {
+          return (
+            <ChatBubble 
+              key={index} 
+              message={message} 
+              from={from} 
+              dateSent={dateSent}
+            >
+            </ChatBubble>);
+        })}
+      </Flex>
+      <Flex pl={4} pr={2} py={2} borderTopColor='gray.100' borderTopWidth={1}>
+        <Input variant='unstyled' placeholder='Type your message'>
+        </Input>
+        <IconButton
+          colorScheme='blue'
+          aria-label='Send message'
+          variant='ghost'
+          icon={<IoSend></IoSend>}
+        >
+          
+        </IconButton>
       </Flex>
     </Flex>
   );
 }
+
+
+const ChatFiles = () => {
+  return (
+    <Flex h='full' flexDirection='column' alignItems='center' w='full' pt={8}>
+      <HStack justify='space-between' w='full' px={8} mb={8}>
+        <Text color='gray.500'>05 DEC 2021</Text>
+        <IconButton
+          rounded='full'
+          icon={<FaBell></FaBell>}
+          color='gray.500'
+          variant='ghost'
+          aria-label='Notification'
+        >
+        </IconButton>
+      </HStack>
+      <Avatar size='2xl' name='Dina Harrison'>
+        <AvatarBadge boxSize={8} borderWidth={4} bg='green.400'>
+          
+        </AvatarBadge>
+      </Avatar>
+      <Heading 
+        size='md' 
+        mt={3}
+      >
+        Dina Harrison
+      </Heading>
+      <HStack px={8} justifyContent='center' spacing={3} mt={6}>
+        <IconButton
+          h={10}
+          icon={<RiDribbbleLine></RiDribbbleLine>}
+          variant='ghost'
+          rounded='full'
+          color='gray.500'
+        >
+        </IconButton>
+        <IconButton
+          h={10}
+          icon={<RiInstagramLine></RiInstagramLine>}
+          variant='ghost'
+          rounded='full'
+          color='gray.500'
+        >
+        </IconButton>
+        <IconButton
+          h={10}
+          icon={<RiTwitterFill></RiTwitterFill>}
+          variant='ghost'
+          rounded='full'
+          color='gray.500'
+        >
+        </IconButton>
+      </HStack>
+      <Box px={8} w='full'>
+        <Divider mt={6} color='gray.100'></Divider>
+      </Box>
+      <VStack spacing={6} overflowY='auto' w='full'>
+        <HStack px={8} w='full' mt={6} justifyContent='space-between'>
+          <Heading size='md'>Share files</Heading>
+          <Button fontWeight='normal' variant='text' size='xs' color='blue'>
+            see all 
+          </Button>
+        </HStack>
+        <List spacing={4} mt={6} width='full'>
+          <ListItem>
+            <ChatFile></ChatFile>
+          </ListItem>
+          <ListItem>
+            <ChatFile></ChatFile>
+          </ListItem>
+          <ListItem>
+            <ChatFile></ChatFile>
+          </ListItem>
+          <ListItem>
+            <ChatFile></ChatFile>
+          </ListItem>
+          <ListItem>
+            <ChatFile></ChatFile>
+          </ListItem>
+          <ListItem>
+            <ChatFile></ChatFile>
+          </ListItem>
+          <ListItem>
+            <ChatFile></ChatFile>
+          </ListItem>
+          <ListItem>
+            <ChatFile></ChatFile>
+          </ListItem>
+          <ListItem>
+            <ChatFile></ChatFile>
+          </ListItem>
+          <ListItem>
+            <ChatFile></ChatFile>
+          </ListItem>
+          <ListItem>
+            <ChatFile></ChatFile>
+          </ListItem>
+          <ListItem>
+            <ChatFile></ChatFile>
+          </ListItem>
+        </List>
+        <Box px={8} w='full'>
+          <Divider mt={6} color='gray.100'></Divider>
+        </Box>
+        <HStack px={8} w='full' mt={6} justifyContent='space-between'>
+          <Heading size='md'>Share links</Heading>
+          <Button fontWeight='normal' variant='text' size='xs' color='blue'>
+            see all 
+          </Button>
+        </HStack>
+        <List pb={6} spacing={4} mt={6} w='full'> 
+          <ListItem>
+            <ChatLink></ChatLink>
+          </ListItem>
+          <ListItem>
+            <ChatLink></ChatLink>
+          </ListItem>
+          <ListItem>
+            <ChatLink></ChatLink>
+          </ListItem>
+          <ListItem>
+            <ChatLink></ChatLink>
+          </ListItem>
+          <ListItem>
+            <ChatLink></ChatLink>
+          </ListItem>
+        </List>
+      </VStack>
+    </Flex>
+  );
+}
+
+
+const ChatLink = () => {
+  return (
+    <HStack w='full' px={8} spacing={3}>
+      <Box w={14} h={12} rounded='lg' bg='gray.100'></Box>
+      <VStack spacing={0} alignItems='flex-start' w='full'>
+        <HStack width='full' justifyContent='space-between'>
+          <Heading fontSize={12} size='sm'>
+            Dribbble.com 
+          </Heading>
+          <Text fontSize={12} color='gray.400'>
+            11:43
+          </Text>
+        </HStack>
+        <Text fontSize={12} color='gray.400'>
+            10:03:40
+        </Text>
+      </VStack>
+    </HStack>
+  );
+}
+
+const ChatFile = () => {
+  return (
+    <HStack w='full' px={8} spacing={3}>
+      <Box w={14} h={12} rounded='lg' bg='gray.100'>
+      </Box>
+      <VStack spacing={0} alignItems='flex-start' w='full'>
+        <Heading fontSize={12} width='full'>
+          PhoLoDenver.jpg
+        </Heading>
+        <HStack width='full' justifyContent='space-between'>
+          <Text fontSize={12} color='gray.400'>
+            10.03.2021 at 11:43
+          </Text>
+          <Text fontSize={12} color='gray.400'>
+            175 Kb
+          </Text>
+        </HStack>
+      </VStack>
+    </HStack>
+  );
+}
+
+
 
 const ChatRow = () => {
   return (
@@ -269,14 +551,19 @@ const Chart = () => {
         flex={1} 
         borderRightColor='gray.100' 
         borderRightWidth={1} 
-        bg='gray.100'>
+      >
         <Chat></Chat>
       </Flex>
       <Flex 
         as='aside' 
         h='full' 
         maxW='sm' 
-        w='full' />
+        w='full'
+      >
+        <ChatFiles>
+
+        </ChatFiles>
+      </Flex>
     </HStack>
   ); 
 }
