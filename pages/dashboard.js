@@ -1,5 +1,23 @@
-import { HStack, VStack, Heading, List, Link, Icon, Text, Box, ListItem } from '@chakra-ui/react'; 
-import { FaHome, FaCompass, FaMusic, FaUserAlt, FaHeart, FaDatabase } from 'react-icons/fa';
+import { HStack, 
+  Avatar,
+  VStack, 
+  Heading, 
+  List, 
+  Link, 
+  Icon, 
+  Text, 
+  Box, 
+  ListItem, 
+  InputGroup, 
+  InputLeftElement, 
+  Input, 
+  Spacer } from '@chakra-ui/react'; 
+import { FaHome, 
+  FaCompass, 
+  FaMusic, 
+  FaUserAlt, 
+  FaHeart, 
+  FaDatabase } from 'react-icons/fa';
 import { RiSearchLine } from 'react-icons/ri';
 import { GiBackwardTime } from 'react-icons/gi';
 import { IoIosSettings } from 'react-icons/io';
@@ -145,6 +163,61 @@ const NavItem = ({ isActive, item }) => {
   );
 }
 
+const MyAvatar = () => {
+  return (
+    <HStack flexShrink={0}>
+      <Text mr={3}>
+        Kunle Ajayi
+      </Text>
+      <Avatar
+        name='Kunle Ajayi'
+        src='/images/dog-2.jpg'
+      ></Avatar> 
+    </HStack>
+  );
+}
+
+const brandRing = {
+  _focus: {
+    ringColor: '#E14949',
+    ring: 3
+  }
+}
+
+const SearchBar = () => {
+  return (
+    <HStack width='full'>
+      <InputGroup maxW='7xl'>
+        <InputLeftElement
+          pointerEvents='non'
+          children={<RiSearchLine></RiSearchLine>}
+        >        
+        </InputLeftElement>
+        <Input
+          variant='outline'
+          rounded='lg'
+          placeholder='Search for sounds, tracks'
+          {...brandRing}
+        >
+        </Input>
+      </InputGroup>
+      <Spacer></Spacer>
+      <MyAvatar></MyAvatar>
+    </HStack>
+  );
+}
+
+
+
+const Logo = () => {
+  return (
+    <Box p={8} pb={4}>
+      <Heading size='lg'>
+        afrosmusic
+      </Heading>
+    </Box>
+  );
+}
 
 
 const Sidebar = () => {
@@ -158,6 +231,7 @@ const Sidebar = () => {
       borderRightWidth={2}
       flexShrink={0}
     >
+      <Logo></Logo>
       <List
         width='full'
         overflow='auto'
@@ -189,6 +263,7 @@ const Content = () => {
         spacing={6}
         overflow='hidden'
       >
+        <SearchBar></SearchBar>
         <HStack
           width='full'
           alignItems='flex-start'
