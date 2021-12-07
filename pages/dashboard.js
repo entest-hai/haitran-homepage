@@ -1,4 +1,4 @@
-import { HStack, 
+import { HStack,
   Avatar,
   VStack, 
   Heading, 
@@ -11,7 +11,10 @@ import { HStack,
   InputGroup, 
   InputLeftElement, 
   Input, 
-  Spacer } from '@chakra-ui/react'; 
+  Spacer, 
+  useBreakpointValue,
+  LinkBox,
+  LinkOverlay} from '@chakra-ui/react'; 
 import { FaHome, 
   FaCompass, 
   FaMusic, 
@@ -23,8 +26,8 @@ import { GiBackwardTime } from 'react-icons/gi';
 import { IoIosSettings } from 'react-icons/io';
 import { BsBoxArrowLeft } from 'react-icons/bs';
 import NextLink from 'next/link'; 
-
-
+import { chakra } from '@chakra-ui/react';
+import NextImage from 'next/image';
 
 const navItems = [
   {
@@ -96,6 +99,134 @@ const navItems = [
     label: 'Log Out',
   },
 ];
+
+
+const genres = [
+  {
+    name: 'Afrobeats',
+    image: '/images/afrobeats.png',
+  },
+  {
+    name: 'Amapiano',
+    image: '/images/amapiano.jpeg',
+  },
+  {
+    name: 'Afropop',
+    image: '/images/afropop.jpg',
+  },
+  {
+    name: 'RnB',
+    image: '/images/rnb.jpg',
+  },
+  {
+    name: 'Afro-Fusion',
+    image: '/images/afro-fusion.jpg',
+  },
+  {
+    name: 'Afrobeats',
+    image: '/images/afrobeats.png',
+  },
+  {
+    name: 'Amapiano',
+    image: '/images/amapiano.jpeg',
+  },
+  {
+    name: 'Afropop',
+    image: '/images/afropop.jpg',
+  },
+  {
+    name: 'RnB',
+    image: '/images/rnb.jpg',
+  },
+  {
+    name: 'Afro-Fusion',
+    image: '/images/afro-fusion.jpg',
+  },
+  {
+    name: 'Afrobeats',
+    image: '/images/afrobeats.png',
+  },
+  {
+    name: 'Amapiano',
+    image: '/images/amapiano.jpeg',
+  },
+  {
+    name: 'Afropop',
+    image: '/images/afropop.jpg',
+  },
+  {
+    name: 'RnB',
+    image: '/images/rnb.jpg',
+  },
+  {
+    name: 'Afro-Fusion',
+    image: '/images/afro-fusion.jpg',
+  },
+];
+
+
+const MyImage = chakra(NextImage, {
+  shouldForwardProp: (prop) => ['width', 'height', 'src', 'alt', 'quality'].includes(prop),
+})
+
+const GenresCarousel = () => {
+
+  const imageSize = useBreakpointValue({ base: '80px', md: '96px', '2xl': '192px' }, '2xl');
+
+  return (
+    <HStack
+      width='full'
+      spacing={12}
+      overflowX='auto'
+      rounded='lg'
+      flexShrink={0}
+    >
+      { genres.map(({name, image}, index ) => (
+        <LinkBox
+          as='article'
+          pb={3}
+          role='group'
+          key={index}
+        >
+          <VStack
+            spacing={4}
+          >
+            <Box
+              rounded='lg'
+              overflow='hidden'
+              width={imageSize}
+              height={imageSize}
+            >
+              <LinkOverlay href='#'>
+                <MyImage 
+                  transition='ease-out'
+                  transitionProperty='all'
+                  transitionDuration='normal'
+                  _groupHover={{
+                    transform: 'scale(1.1, 1.1)'
+                  }}
+                  src={image}
+                  width={imageSize}
+                  height={imageSize}
+                  objectFit='cover'
+                  quality="100"
+                >
+                </MyImage>
+              </LinkOverlay>
+            </Box>
+            <Text
+              fontWeight='medium'
+            >
+              {name}
+            </Text>
+          </VStack>
+        </LinkBox>
+      )) }
+    </HStack>
+  );
+}
+
+
 
 const NavItem = ({ isActive, item }) => {
   const { label } = item; 
@@ -264,6 +395,7 @@ const Content = () => {
         overflow='hidden'
       >
         <SearchBar></SearchBar>
+        <GenresCarousel></GenresCarousel>
         <HStack
           width='full'
           alignItems='flex-start'
